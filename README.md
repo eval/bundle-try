@@ -1,7 +1,7 @@
 # Bundle Try
 
 Open a REPL with the gems you want to try.  
-Inspired by [lein-try](https://github.com/rkneufeld/lein-try).
+Quick weekend-hack inspired by [lein-try](https://github.com/rkneufeld/lein-try).
 
 ## Usage
 
