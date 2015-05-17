@@ -1,39 +1,71 @@
-# Bundle::Try
+# Bundle Try
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundle/try`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bundle-try'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install bundle-try
+Open a REPL with the gems you want to try.  
+Inspired by [lein-try](https://github.com/rkneufeld/lein-try).
 
 ## Usage
 
-TODO: Write usage instructions here
+Pick a gem, any gem:
 
-## Development
+```
+$ bundle try redis
+... some bundling ...
+irb(main):001:0> Redis
+=> Redis
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+Multiple gems:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```
+$ bundle try redis rake
+```
 
-## Contributing
+Specific version:
 
-1. Fork it ( https://github.com/[my-github-username]/bundle-try/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+```
+$ bundle try redis '3.1.0'
+```
+
+...or any requirement that would be understood by bundler:
+
+```
+$ bundle try redis '~> 3.1.0'
+```
+
+Mix and match with gems you don't care about the version:
+
+```
+$ bundle try redis '~> 3.1.0' rake gem3 '1.0'
+```
+
+Github repository:
+
+```
+$ bundle try https://github.com/jeremyevans/sequel # or the clone-url with .git
+```
+
+Specific github version:
+
+```
+$ bundle try https://github.com/jeremyevans/sequel 4.21.0
+```
+
+Prepend the gem-name when it can't be derived from the url:
+
+```
+$ bundle try redis@https://github.com/redis/redis-rb
+```
+
+No Gemfile will be saved, so it's save to run from an existing project-folder.
+But if you need it:
+
+```
+$ bundle try rake > Gemfile
+```
+
+## Installation
+
+```
+gem install bundle-try
+```
+
