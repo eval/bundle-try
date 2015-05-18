@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "bundle-try"
-  spec.version       = '1.0.0'
+  spec.version       = '1.1.0'
   spec.authors       = ["Gert Goet"]
   spec.email         = ["gert@thinkcreate.nl"]
 
@@ -27,5 +27,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "bundler", "~> 1.9"
+  spec.add_dependency "thor"
   spec.add_development_dependency "rake", "~> 10.0"
 end
