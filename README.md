@@ -32,10 +32,10 @@ $ bundle try redis '3.1.0'
 $ bundle try redis '~> 3.1.0'
 ```
 
-Mix and match with gems you don't care about the version:
+Combined with gems that don't need a specific version:
 
 ```
-$ bundle try redis '~> 3.1.0' rake gem3 '1.0'
+$ bundle try redis '~> 3.1.0' rake gem_with_version '1.0'
 ```
 
 Github repository:
