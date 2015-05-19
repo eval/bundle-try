@@ -5,7 +5,7 @@ gemfile = Tempfile.new('bundle-try')
 gemfile_content = BundleTry::GemfileGenerator.new(ARGV.dup).generate
 File.write(gemfile.path, gemfile_content)
 
-if %w(-h --help help try).include?(ARGV.first)
+if ARGV.empty? || %w(-h --help help try).include?(ARGV.first)
 puts(<<-EOH)
 Examples:
 
@@ -47,6 +47,7 @@ EOH
 end
 
 ENV['BUNDLE_GEMFILE'] = gemfile.path
+
 if STDOUT.tty?
   puts "Need to see/re-use the generated Gemfile? Just pipe to a file (e.g. `bundle try rake > Gemfile`)"
   require 'bundler/cli'

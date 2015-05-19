@@ -23,8 +23,9 @@ module BundleTry
     def group2gemline(group)
       result = begin
         case group.first
-        when /\/\/github\.com/
-          github = group.first[/github\.com\/(.+)(?:\.git)?$/, 1]
+        when /\/\/github\.com|gh:/
+          group.first[/(?:github\.com\/|gh:)(?:(.*)\.git|(.*))$/]
+          github = $1 || $2
           name = if group.first.include?('@')
                    group.first.split('@').first
                  else
