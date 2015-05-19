@@ -5,7 +5,7 @@ gemfile = Tempfile.new('bundle-try')
 gemfile_content = BundleTry::GemfileGenerator.new(ARGV.dup).generate
 File.write(gemfile.path, gemfile_content)
 
-if %w(-h --help help try).include?(ARGV.first)
+if ARGV.empty? || %w(-h --help help try).include?(ARGV.first)
 puts(<<-EOH)
 Examples:
 
@@ -16,37 +16,54 @@ $ bundle try redis
 irb(main):001:0> Redis
 => Redis
 
-
 Multiple gems:
+
 $ bundle try redis rake
 
 Specific version:
+
 $ bundle try redis '3.1.0'
 
 ...or any requirement that would be understood by bundler:
+
 $ bundle try redis '~> 3.1.0'
 
-Mix and match with gems you don't care about the version:
-$ bundle try redis '~> 3.1.0' rake gem3 '1.0'
+Combined with gems that don't need a specific version:
+
+$ bundle try redis '~> 3.1.0' rake gem_with_version '1.0'
 
 Github repository:
+
 $ bundle try https://github.com/jeremyevans/sequel # or the clone-url with .git
 
-Specific github version:
-$ bundle try https://github.com/jeremyevans/sequel 4.21.0
+...or via the short notation:
+
+$ bundle try gh:jeremyevans/sequel
+
+Specific Github version:
+
+$ bundle try gh:jeremyevans/sequel 4.21.0
 
 Prepend the gem-name when it can't be derived from the url:
-$ bundle try redis@https://github.com/redis/redis-rb
+
+$ bundle try redis@gh:redis/redis-rb
 
 No Gemfile will be saved, so it's save to run from an existing project-folder.
 But if you need it:
+
 $ bundle try rake > Gemfile
+
+No, the following won't work :(
+
+# No Gemception
+$ bundle try bundle-try
 
 EOH
   exit
 end
 
 ENV['BUNDLE_GEMFILE'] = gemfile.path
+
 if STDOUT.tty?
   puts "Want to capture the generated Gemfile? Use `bundle try rake > Gemfile`."
   require 'bundler/cli'

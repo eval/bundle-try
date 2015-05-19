@@ -44,16 +44,22 @@ Github repository:
 $ bundle try https://github.com/jeremyevans/sequel # or the clone-url with .git
 ```
 
-Specific github version:
+...or via the short notation:
 
 ```
-$ bundle try https://github.com/jeremyevans/sequel 4.21.0
+$ bundle try gh:jeremyevans/sequel
+```
+
+Specific Github version:
+
+```
+$ bundle try gh:jeremyevans/sequel 4.21.0
 ```
 
 Prepend the gem-name when it can't be derived from the url:
 
 ```
-$ bundle try redis@https://github.com/redis/redis-rb
+$ bundle try redis@gh:redis/redis-rb
 ```
 
 No Gemfile will be saved, so it's save to run from an existing project-folder.
@@ -62,6 +68,14 @@ But if you need it:
 ```
 $ bundle try rake > Gemfile
 ```
+
+No, the following won't work :(
+
+```
+# No Gemception
+$ bundle try bundle-try
+```
+
 
 ## Installation
 
