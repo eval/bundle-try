@@ -48,7 +48,7 @@ end
 
 ENV['BUNDLE_GEMFILE'] = gemfile.path
 if STDOUT.tty?
-  puts "Need to see/re-use the generated Gemfile? Just pipe to a file (e.g. `bundle try rake > Gemfile`)"
+  puts "Want to capture the generated Gemfile? Use `bundle try rake > Gemfile`."
   require 'bundler/cli'
   Bundler::CLI.start(%W(install), :debug => true)
   Bundler::CLI.start(%W(console), :debug => true)
