@@ -3,7 +3,7 @@ Feature: The try subcommand
   I want to start a repl with `gem try foo`
 
   Scenario Outline: Getting help
-    When I run bundle-try "<arg>"
+    When I run bundle try "<arg>"
     Then I should see the usage-instructions
 
     Examples:
@@ -14,23 +14,23 @@ Feature: The try subcommand
       |        |
 
   Scenario: A simple gem
-    When I run `bundle try some_gem`
+    When I run bundle try "some_gem"
     Then the generated Gemfile contains a line "gem 'some_gem'"
 
   Scenario: Multiple gems
-    When I run `bundle try some_gem some_other_gem`
+    When I run bundle try "some_gem some_other_gem"
     Then the generated Gemfile contains a line "gem 'some_gem'" and a line "gem 'some_other_gem'"
 
   Scenario: Gem versions
-    When I run `bundle try some_gem 1.2`
+    When I run bundle try "some_gem 1.2"
     Then the generated Gemfile contains a line "gem 'some_gem', '1.2'"
 
   Scenario: Gem versions and non-versioned gem
-    When I run `bundle try some_gem 1.2 some_other_gem`
+    When I run bundle try "some_gem 1.2 some_other_gem"
     Then the generated Gemfile contains a line "gem 'some_gem', '1.2'" and a line "gem 'some_other_gem'"
 
   Scenario Outline: Github gem
-    When I run `bundle try <repos>`
+    When I run bundle try "<repos>"
     Then the generated Gemfile contains a line "gem 'sequel', github: 'jeremyevans/sequel'"
 
     Examples:
@@ -40,17 +40,17 @@ Feature: The try subcommand
      | gh:jeremyevans/sequel                     | short notation  |
 
   Scenario: Github gem with tag
-    When I run `bundle try https://github.com/rails/rails v4.2.1`
+    When I run bundle try "https://github.com/rails/rails v4.2.1"
     Then the generated Gemfile contains a line "gem 'rails', github: 'rails/rails', ref: 'v4.2.1'"
 
   Scenario: Github gem with sha
-    When I run `bundle try https://github.com/rails/rails f1ccb2e`
+    When I run bundle try "https://github.com/rails/rails f1ccb2e"
     Then the generated Gemfile contains a line "gem 'rails', github: 'rails/rails', ref: 'f1ccb2e'"
 
   Scenario: Github gem with a specific name
-    When I run `bundle try redis@https://github.com/redis/redis-rb`
+    When I run bundle try "redis@https://github.com/redis/redis-rb"
     Then the generated Gemfile contains a line "gem 'redis', github: 'redis/redis-rb'"
 
   Scenario: Github gem with a specific name using short notation
-    When I run `bundle try redis@gh:redis/redis-rb`
+    When I run bundle try "redis@gh:redis/redis-rb"
     Then the generated Gemfile contains a line "gem 'redis', github: 'redis/redis-rb'"

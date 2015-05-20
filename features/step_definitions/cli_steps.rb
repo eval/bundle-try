@@ -1,4 +1,4 @@
-When(/^I run bundle\-try "([^"]*)"$/) do |arg|
+When(/^I run bundle try "([^"]*)"$/) do |arg|
   run_simple(unescape("ruby -I../../lib ../../exe/bundler-try #{arg}"), false)
 end
 
