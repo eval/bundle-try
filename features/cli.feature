@@ -3,7 +3,7 @@ Feature: The try subcommand
   I want to start a repl with `gem try foo`
 
   Scenario Outline: Getting help
-    When I run `bundle try <arg>`
+    When I run bundle-try "<arg>"
     Then I should see the usage-instructions
 
     Examples:
