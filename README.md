@@ -62,7 +62,7 @@ Prepend the gem-name when it can't be derived from the url:
 $ bundle try redis@gh:redis/redis-rb
 ```
 
-Gem in a gist:
+Gem in a gist (see [the gist](https://gist.github.com/eval/66f7bfaf17d364ddd232) as an example of a minimum viable gem):
 
 ```
 $ bundle try rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232
