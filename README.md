@@ -62,6 +62,12 @@ Prepend the gem-name when it can't be derived from the url:
 $ bundle try redis@gh:redis/redis-rb
 ```
 
+Gem in a gist:
+
+```
+$ bundle try rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232
+```
+
 No Gemfile will be saved, so it's save to run from an existing project-folder.
 But if you need it:
 

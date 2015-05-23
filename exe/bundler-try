@@ -1,9 +1,5 @@
 #!/usr/bin/env ruby
 require 'bundle-try'
-require 'tempfile'
-gemfile = Tempfile.new('bundle-try')
-gemfile_content = BundleTry::GemfileGenerator.new(ARGV.dup).generate
-File.write(gemfile.path, gemfile_content)
 
 if ARGV.empty? || %w(-h --help help try).include?(ARGV.first)
 puts(<<-EOH)
@@ -61,6 +57,11 @@ $ bundle try bundle-try
 EOH
   exit
 end
+
+require 'tempfile'
+gemfile = Tempfile.new('bundle-try')
+gemfile_content = BundleTry::Gemfile.render({:gemlines => BundleTry.argv_to_gemlines(ARGV.dup) })
+File.write(gemfile.path, gemfile_content)
 
 ENV['BUNDLE_GEMFILE'] = gemfile.path
 

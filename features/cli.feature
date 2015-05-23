@@ -54,3 +54,11 @@ Feature: The try subcommand
   Scenario: Github gem with a specific name using short notation
     When I run bundle try "redis@gh:redis/redis-rb"
     Then the generated Gemfile contains a line "gem 'redis', github: 'redis/redis-rb'"
+
+  Scenario: Gist with gemname
+    When I run bundle try "rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232"
+    Then the generated Gemfile contains a line "gem 'rot13', gist: 'eval/66f7bfaf17d364ddd232'"
+
+  Scenario: Gist without gemname
+    When I run bundle try "https://gist.github.com/eval/66f7bfaf17d364ddd232"
+    Then the output should contain "ArgumentError"
