@@ -1,3 +1,10 @@
+## 1.6.1
+
+### Fixed
+
+ * Generated Gemfile is ruby 1.9.3 compatible
+ * Output of `bundle install` appeared in the generated Gemfile.
+
 ## 1.6.0
 
 ### Added
