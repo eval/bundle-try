@@ -73,10 +73,10 @@ source "https://rubygems.org"
 
 {{#gemlines}}
 {{#github?}}
-gem '{{ name }}', github: '{{ github }}'{{#ref}}, ref: '{{ref}}'{{/ref}}
+gem '{{ name }}', :github => '{{ github }}'{{#ref}}, :ref => '{{ref}}'{{/ref}}
 {{/github?}}
 {{#gist?}}
-gem '{{ name }}', gist: '{{ gist }}'{{#ref}}, ref: '{{ref}}'{{/ref}}
+gem '{{ name }}', :gist => '{{ gist }}'{{#ref}}, :ref => '{{ref}}'{{/ref}}
 {{/gist?}}
 {{#regular?}}
 gem '{{ name }}'{{#versionlike}}, '{{{ versionlike }}}'{{/versionlike}}

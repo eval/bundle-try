@@ -31,7 +31,7 @@ Feature: The try subcommand
 
   Scenario Outline: Github gem
     When I run bundle try "<repos>"
-    Then the generated Gemfile contains a line "gem 'sequel', github: 'jeremyevans/sequel'"
+    Then the generated Gemfile contains a line "gem 'sequel', :github => 'jeremyevans/sequel'"
 
     Examples:
      | repos                                     | comment         |
@@ -41,23 +41,23 @@ Feature: The try subcommand
 
   Scenario: Github gem with tag
     When I run bundle try "https://github.com/rails/rails v4.2.1"
-    Then the generated Gemfile contains a line "gem 'rails', github: 'rails/rails', ref: 'v4.2.1'"
+    Then the generated Gemfile contains a line "gem 'rails', :github => 'rails/rails', :ref => 'v4.2.1'"
 
   Scenario: Github gem with sha
     When I run bundle try "https://github.com/rails/rails f1ccb2e"
-    Then the generated Gemfile contains a line "gem 'rails', github: 'rails/rails', ref: 'f1ccb2e'"
+    Then the generated Gemfile contains a line "gem 'rails', :github => 'rails/rails', :ref => 'f1ccb2e'"
 
   Scenario: Github gem with a specific name
     When I run bundle try "redis@https://github.com/redis/redis-rb"
-    Then the generated Gemfile contains a line "gem 'redis', github: 'redis/redis-rb'"
+    Then the generated Gemfile contains a line "gem 'redis', :github => 'redis/redis-rb'"
 
   Scenario: Github gem with a specific name using short notation
     When I run bundle try "redis@gh:redis/redis-rb"
-    Then the generated Gemfile contains a line "gem 'redis', github: 'redis/redis-rb'"
+    Then the generated Gemfile contains a line "gem 'redis', :github => 'redis/redis-rb'"
 
   Scenario: Gist with gemname
     When I run bundle try "rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232"
-    Then the generated Gemfile contains a line "gem 'rot13', gist: 'eval/66f7bfaf17d364ddd232'"
+    Then the generated Gemfile contains a line "gem 'rot13', :gist => 'eval/66f7bfaf17d364ddd232'"
 
   Scenario: Gist without gemname
     When I run bundle try "https://gist.github.com/eval/66f7bfaf17d364ddd232"
