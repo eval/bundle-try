@@ -5,7 +5,10 @@ Quick weekend-hack inspired by [lein-try](https://github.com/rkneufeld/lein-try)
 
 ## Usage
 
-Pick a gem, any gem:
+By default `bundle try some_gem` will start a Ruby REPL.  
+To open a shell (i.e. to use gem executables) do: `bundle try --shell some_gem`.
+
+Some examples:
 
 ```
 $ bundle try redis
