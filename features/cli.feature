@@ -62,3 +62,7 @@ Feature: The try subcommand
   Scenario: Gist without gemname
     When I run bundle try "https://gist.github.com/eval/66f7bfaf17d364ddd232"
     Then the output should contain "ArgumentError"
+
+  Scenario: Start a shell
+    When I run bundle try "some_gem --shell" interactively
+    Then a shell should start
