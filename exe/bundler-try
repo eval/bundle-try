@@ -5,7 +5,7 @@ if ARGV.empty? || %w(-h --help help try).include?(ARGV.first)
 puts(<<-EOH)
 OPTIONS
     --shell
-      Opens a shell instead of a Ruby REPL. This will let you try executables.
+      Opens a shell instead of a Ruby REPL. This will let you try executables etc.
 
 EXAMPLES
 
