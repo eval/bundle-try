@@ -78,16 +78,24 @@ else
   gemfile_content = BundleTry::Gemfile.render({:gemlines => BundleTry.argv_to_gemlines(argv) })
   File.write(gemfile_path, gemfile_content)
   Dir.chdir bundle_try_folder
-  Bundler::CLI.start(%W(install), :debug => true)
+
+  bundle_install = ->(quiet = false) {
+    cmd = %w(install)
+    cmd << '--quiet' if quiet
+    Bundler::CLI.start(cmd, :debug => false)
+  }
 
   if ARGV.include?('--shell')
+    bundle_install[]
     puts "Entering folder '#{bundle_try_folder}'. Happy hacking!"
     `#{ENV['SHELL']} 1>&2`
   else
     if STDOUT.tty?
+      bundle_install[]
       puts "Want to capture the generated Gemfile? Use `bundle try rake > Gemfile`."
       Bundler::CLI.start(%W(console), :debug => true)
     else
+      bundle_install[:quiet]
       puts gemfile_content
     end
   end

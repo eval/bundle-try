@@ -19,6 +19,8 @@ end
 
 Then(/^the generated Gemfile contains a line "([^"]*)"(?: and a line "([^"]*)")?$/) do |exp1, exp2|
   output_lines = all_output.split("\n")
+
+  expect(output_lines.first).to eq('source "https://rubygems.org"')
   expect(output_lines).to(include(exp1)) &&
     (!exp2 || expect(output_lines).to(include(exp2)))
 end
