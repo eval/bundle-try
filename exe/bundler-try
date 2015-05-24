@@ -71,7 +71,7 @@ else
 
   bundle_try_folder = File.join(Dir.tmpdir, 'bundle-try')
   gemfile_path = File.join(bundle_try_folder, 'Gemfile')
-  FileUtils.rm_r(bundle_try_folder, secure: true)
+  FileUtils.rm_r(bundle_try_folder, secure: true) if Dir.exist?(bundle_try_folder)
   FileUtils.mkdir(bundle_try_folder)
 
   argv = ARGV.dup.tap {|a| a.delete('--shell') }
