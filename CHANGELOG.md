@@ -1,3 +1,13 @@
+## 1.6.0
+
+### Added
+
+ * instead of a repl you can now start a shell:
+
+        $ bundle try rake --shell
+        Bundling...
+        bash> bundle exec rake --version
+
 ## 1.5.0
 
 ### Fixed
