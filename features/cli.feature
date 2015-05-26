@@ -40,12 +40,12 @@ Feature: The try subcommand
      | gh:jeremyevans/sequel                     | short notation  |
 
   Scenario: Github gem with tag
-    When I run bundle try "https://github.com/rails/rails v4.2.1"
-    Then the generated Gemfile contains a line "gem 'rails', :github => 'rails/rails', :ref => 'v4.2.1'"
+    When I run bundle try "https://github.com/jeremyevans/sequel 4.14.0"
+    Then the generated Gemfile contains a line "gem 'sequel', :github => 'jeremyevans/sequel', :ref => '4.14.0'"
 
   Scenario: Github gem with sha
-    When I run bundle try "https://github.com/rails/rails f1ccb2e"
-    Then the generated Gemfile contains a line "gem 'rails', :github => 'rails/rails', :ref => 'f1ccb2e'"
+    When I run bundle try "https://github.com/jeremyevans/sequel d9ee20b"
+    Then the generated Gemfile contains a line "gem 'sequel', :github => 'jeremyevans/sequel', :ref => 'd9ee20b'"
 
   Scenario: Github gem with a specific name
     When I run bundle try "redis@https://github.com/redis/redis-rb"
@@ -66,3 +66,14 @@ Feature: The try subcommand
   Scenario: Start a shell
     When I run bundle try "some_gem --shell" interactively
     Then a shell should start
+
+  Scenario Outline: Special requires
+    When I run bundle try "<gem>"
+    Then the generated Gemfile contains a line "gem '<gem>', :require => <requires>"
+
+    Examples:
+      | gem           | requires                            |
+      | rails         | ["rails/all", "active_support/all"] |
+      | activerecord  | ["active_record"]                   |
+      | activesupport | ["active_support/all"]              |
+

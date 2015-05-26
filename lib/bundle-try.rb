@@ -19,6 +19,12 @@ module BundleTry
   end
 
   class Gemline
+    REQUIREMENTS = {
+      'rails' => %w(rails/all active_support/all),
+      'activerecord' => %w(active_record),
+      'activesupport' => %w(active_support/all),
+    }.freeze
+
     attr_reader :versionlike, :namelike
 
     def initialize(namelike, versionlike = nil)
@@ -64,6 +70,10 @@ module BundleTry
       namelike[/(?:github\.com\/|gh:)(?:(.*)\.git|(.*))$/]
       $1 || $2
     end
+
+    def requires
+      REQUIREMENTS[name].inspect if REQUIREMENTS[name]
+    end
   end
 
   class Gemfile < Mustache
@@ -73,13 +83,13 @@ source "https://rubygems.org"
 
 {{#gemlines}}
 {{#github?}}
-gem '{{ name }}', :github => '{{ github }}'{{#ref}}, :ref => '{{ref}}'{{/ref}}
+gem '{{ name }}', :github => '{{ github }}'{{#ref}}, :ref => '{{ref}}'{{/ref}}{{#requires}}, :require => {{{requires}}}{{/requires}}
 {{/github?}}
 {{#gist?}}
 gem '{{ name }}', :gist => '{{ gist }}'{{#ref}}, :ref => '{{ref}}'{{/ref}}
 {{/gist?}}
 {{#regular?}}
-gem '{{ name }}'{{#versionlike}}, '{{{ versionlike }}}'{{/versionlike}}
+gem '{{ name }}'{{#versionlike}}, '{{{ versionlike }}}'{{/versionlike}}{{#requires}}, :require => {{{requires}}}{{/requires}}
 {{/regular?}}
 {{/gemlines}}
 template

@@ -17,7 +17,7 @@ Then(/^a shell should start$/) do
   assert_partial_output("bash", all_output)
 end
 
-Then(/^the generated Gemfile contains a line "([^"]*)"(?: and a line "([^"]*)")?$/) do |exp1, exp2|
+Then(/^the generated Gemfile contains a line "(.*?)"(?: and a line "([^"]*)")?$/) do |exp1, exp2|
   output_lines = all_output.split("\n")
 
   expect(output_lines.first).to eq('source "https://rubygems.org"')
