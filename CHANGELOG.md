@@ -1,3 +1,16 @@
+## Unreleased
+
+### Added
+
+ * add requires for some gems `rails`, `activesupport` and `activerecord` that have a "name-require-mismatch" (i.e. gem `activerecord` should be required as `active_record`).  
+ So no more require, but right to the action!:
+
+        $ bundle try activesupport
+        irb> Date.today.beginning_of_week
+
+        $ DATABASE_URL='sqlite3::memory:' bundle try rails sqlite3
+        irb> ActiveRecord::Base.establish_connection
+
 ## 1.6.1
 
 ### Fixed
