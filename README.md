@@ -3,6 +3,12 @@
 Open a REPL with the gems you want to try.  
 Quick weekend-hack inspired by [lein-try](https://github.com/rkneufeld/lein-try).
 
+## Installation
+
+```
+gem install bundle-try
+```
+
 ## Usage
 
 By default `bundle try some_gem` will start a Ruby REPL.  
@@ -71,24 +77,33 @@ Gem in a gist (see [the gist](https://gist.github.com/eval/66f7bfaf17d364ddd232)
 $ bundle try rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232
 ```
 
-No Gemfile will be saved, so it's save to run from an existing project-folder.
-But if you need it:
+Nothing will be written to the current directory, so it's save to run from an existing project-folder.
+But if you need the Gemfile:
 
 ```
 $ bundle try rake > Gemfile
 ```
 
-No, the following won't work :(
+Feeling lucky?
 
 ```
-# No Gemception
+# Gemception
 $ bundle try bundle-try
 ```
 
 
-## Installation
+## Developing
+
+Run the features:
 
 ```
-gem install bundle-try
+$ bundle exec cucumber
 ```
 
+## Is it any good?
+
+Glad you ask! Yes, it's 'Cloons Approved'. This, as my Ruby-friend [Elizabeth](https://twitter.com/_elsapet) learned me, means that if this gem would've had a slightly bigger budget, there would be a nice Nespresso-like commercial with George himself vowing for this software.  
+
+![image](assets/cloons-approved.png)
+
+Thanks to [Odaeus](https://github.com/Odaeus) for the image.

@@ -52,14 +52,13 @@ Gem in a gist (see [the gist](https://gist.github.com/eval/66f7bfaf17d364ddd232)
 
 $ bundle try rot13@https://gist.github.com/eval/66f7bfaf17d364ddd232
 
-No Gemfile will be saved, so it's save to run from an existing project-folder.
-But if you need it:
+Nothing will be written to the current directory, so it's save to run from an existing project-folder.
+But if you need the Gemfile:
 
 $ bundle try rake > Gemfile
 
-No, the following won't work :(
+Feeling lucky?
 
-# No Gemception
 $ bundle try bundle-try
 
 EOH
