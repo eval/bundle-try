@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "bundle-try"
-  spec.version       = '1.6.2'
+  spec.version       = '1.7.0'
   spec.authors       = ["Gert Goet"]
   spec.email         = ["gert@thinkcreate.nl"]
 
